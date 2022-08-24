@@ -1,3 +1,18 @@
+import { getSwell } from "~/lib/swell";
+
+export async function loader({context}) {
+  const swellStoreId = context.SWELL_STORE_ID;
+  const swellPublicKey = context.SWELL_PUBLIC_KEY;
+  const swell = getSwell(swellStoreId, swellPublicKey);
+  const [settings, products] = await Promise.all([
+    swell.settings.get(),
+    swell.products.get()
+  ])
+  console.log('settings :>> ', settings);
+  console.log('products :>> ', products);
+  return null
+}
+
 export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
