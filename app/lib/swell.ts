@@ -1,9 +1,9 @@
 import swell from 'swell-js'
 
-interface Credentials {
-  storeId: string;
-  publicKey: string;
-}
+// interface Credentials {
+//   storeId: string;
+//   publicKey: string;
+// }
 
 interface FetchProductsParams {
   limit?: number;
