@@ -40,33 +40,33 @@ export function initSwell(storeId: string, publicKey: string) {
     swell.init(storeId, publicKey, options);
 }
 
-const ensureSwellIsInitialised = (fn: any) => (...params: any) => {
+const ensureSwellIsInitialised = (...params: any) => {
   if (!swell.options?.store && !swell.options?.key) {
     throw new Error('Swell is not initialised, please ensure to initialise Swell');
   }
-  return fn(...params);
 }
 
-export const fetchSettings = ensureSwellIsInitialised(
-  async function fetchSettings() {
-    return swell.settings.get();
-  }
-)
+export async function fetchSettings() {
+  ensureSwellIsInitialised()
+  return swell.settings.get();
+}
 
-export const fetchProducts = ensureSwellIsInitialised(
-  async function fetchProducts(options: FetchProductsParams = {limit: 25, page: 1}) {
-    return swell.products.list(options);
-  }
-)
+export async function fetchProducts(options: FetchProductsParams = {limit: 25, page: 1}) {
+  ensureSwellIsInitialised()
+  return swell.products.list(options);
+}
 
-export const fetchProduct = ensureSwellIsInitialised(
-  async function fetchProduct(slugOrId: string) {
-    return swell.products.get(slugOrId);
-  }
-)
+export async function fetchProduct(slugOrId: string) {
+  ensureSwellIsInitialised()
+  return swell.products.get(slugOrId);
+}
 
-export const fetchCart = ensureSwellIsInitialised(
-  async function fetchCart() {
-    return swell.cart.get();
-  }
-)
+export async function fetchCart(): Promise<any> {
+  ensureSwellIsInitialised()
+  return swell.cart.get();
+}
+
+export async function addItemToCart({productId, quantity = 1}: {productId: string, quantity?: number}) {
+  ensureSwellIsInitialised()
+  return swell.cart.addItem({productId, quantity});
+}
