@@ -1,12 +1,6 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
 import { json } from "@remix-run/cloudflare";
-import { Links } from "./components/atoms/links";
-import { LiveReload } from "./components/atoms/liveReload";
-import { Meta } from "./components/atoms/meta";
-import { Outlet } from "./components/atoms/outlet";
-import { Scripts } from "./components/atoms/scripts";
-import { ScrollRestoration } from "./components/atoms/scrollRestoration";
-import { useLoaderData } from "./components/atoms/useLoaderData";
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from "@remix-run/react";
 import { Layout } from "./components/templates/layout";
 import styles from "./styles/app.css"
 

@@ -1,8 +1,8 @@
-import { useLoaderData } from "~/components/atoms/useLoaderData";
-import ProductList from "~/components/templates/productList";
+import { useLoaderData } from "@remix-run/react";
+import { ProductList } from "~/components/templates/product-list";
 import { fetchProducts, fetchSettings, initSwell } from "~/lib/swell";
 
-export async function loader({context}) {
+export async function loader({ context }) {
   const swellStoreId = context.SWELL_STORE_ID;
   const swellPublicKey = context.SWELL_PUBLIC_KEY;
 
@@ -19,10 +19,12 @@ export async function loader({context}) {
 }
 
 export default function Index() {
-  const {settings, products} = useLoaderData();
-  console.log('products :>> ', products);
+  const { products } = useLoaderData();
+  // console.log('products :>> ', products);
   return (
-    <ProductList/>
+    <ProductList
+      products={products}
+    />
 
   );
 }

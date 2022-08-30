@@ -662,10 +662,6 @@ video {
   max-width: 80rem;
 }
 
-.max-w-5xl {
-  max-width: 64rem;
-}
-
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
