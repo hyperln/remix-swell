@@ -23,7 +23,7 @@ export default function Index() {
   // console.log('products :>> ', products);
   return (
     <ProductList
-      products={products}
+      products={products?.results}
     />
 
   );

@@ -1,28 +1,29 @@
-import { ReactElement } from "react";
-
-
 interface Props {
-    id?: string | ReactElement | ReactElement[];
-    href?: ReactElement | ReactElement[];
-    name?: ReactElement | ReactElement[];
-    price?: string | ReactElement | ReactElement[];
-    imageUrl?: string;
+    product: Product;
 }
 
-export function CollectionItem({
-    id,
-    href,
-    name,
-    price,
-    imageUrl }: Props) {
+interface Product {
+    id: string;
+    href: string;
+    name: string;
+    price: string;
+    images: {
+        file: {
+            url: string;
+        }
+    }[];
+}
+
+export function CollectionItem({ product }: Props) {
+    const imageUrl = product.images[0].file.url;
 
     return (
-        <a key={id} href={href} className="group">
+        <a key={product.id} href={product.href} className="group">
             <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                <img alt={name} src={imageUrl} className="w-full h-full object-center object-cover group-hover:opacity-75" />
+                <img alt={product.name} src={imageUrl} className="w-full h-full object-center object-cover group-hover:opacity-75" />
             </div>
-            <h3 className="mt-4 text-sm text-gray-700">{name}</h3>
-            <p className="mt-1 text-lg font-medium text-gray-900">{price}</p>
+            <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
+            <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
         </a>
     );
 }
