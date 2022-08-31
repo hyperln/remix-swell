@@ -1,47 +1,37 @@
-import { getSwell } from "~/lib/swell";
+import { useLoaderData } from "@remix-run/react";
+import { Cart } from "~/components/organism";
+import { fetchProducts, fetchSettings, initSwell } from "~/lib/swell";
 
 export async function loader({context}) {
   const swellStoreId = context.SWELL_STORE_ID;
   const swellPublicKey = context.SWELL_PUBLIC_KEY;
-  const swell = getSwell(swellStoreId, swellPublicKey);
+
+  initSwell(swellStoreId, swellPublicKey)
+
   const [settings, products] = await Promise.all([
-    swell.settings.get(),
-    swell.products.get()
+    fetchSettings(),
+    fetchProducts(),
   ])
-  console.log('settings :>> ', settings);
-  console.log('products :>> ', products);
-  return null
+  return {
+    settings,
+    products,
+  }
 }
 
 export default function Index() {
+  const {settings, products} = useLoaderData();
+  console.log('products :>> ', products);
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1 className="text-3xl font-bold underline">Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
+      <Cart />
+      <h1 className="text-3xl font-bold underline">Welcome to {settings.store.name}</h1>
+      <p>We have {products.count} products in our fantastic store, have a look at them all below.</p>
+      {products.results.map((product: any) => (
+        <div key={product.id}>
+          <img alt={product.name} src={product.images[0].file.url} />
+          <p >{product.name}</p>
+        </div>
+      ))}
     </div>
   );
 }
