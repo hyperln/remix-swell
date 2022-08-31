@@ -882,10 +882,6 @@ video {
   --tw-ring-offset-width: 2px;
 }
 
-.focus\:ring-offset-1:focus {
-  --tw-ring-offset-width: 1px;
-}
-
 .group:hover .group-hover\:opacity-75 {
   opacity: 0.75;
 }
