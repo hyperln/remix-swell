@@ -14,7 +14,7 @@ interface Product {
     }[];
 }
 
-export function CollectionItem({ product }: Props) {
+export function ProductItem({ product }: Props) {
     const imageUrl = product.images[0].file.url;
 
     return (
