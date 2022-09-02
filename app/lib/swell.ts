@@ -71,8 +71,7 @@ export async function addItemToCart({ productId, quantity = 1 }: { productId: st
   return swell.cart.addItem({ productId, quantity });
 }
 
-export async function removeItemFromCart({ productId }: { productId: string }) {
+export async function removeItemFromCart(itemId: string) {
   ensureSwellIsInitialised()
-  console.log(productId)
-  return swell.cart.removeItem(productId)
+  return swell.cart.removeItem(itemId)
 }

@@ -4,8 +4,6 @@ import { ShoppingCartIcon as OutlineCartIcon } from '@heroicons/react/24/outline
 import { ShoppingCartIcon as SolidCartIcon } from '@heroicons/react/24/solid'
 import { Link, useNavigate } from "@remix-run/react";
 
-
-
 export function CartMenu() {
   const [cart, setCart] = useState(null);
 
@@ -30,7 +28,6 @@ export function CartMenu() {
           // type="button"
           className="rounded-full p-1 text-gray-700 hover:text-black"
         // onClick={() => navigate("/cart")}
-
         >
           <span className="sr-only">Cart</span>
           {cart ? (<SolidCartIcon className="h-6 w-6" aria-hidden="true" />) : <OutlineCartIcon className="h-6 w-6" aria-hidden="true" />}
