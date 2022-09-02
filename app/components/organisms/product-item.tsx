@@ -37,12 +37,6 @@ export function ProductItem({ product }: Props) {
             >
                 Add to cart
             </button>
-            <button
-                onClick={() => removeItemFromCart({ productId: product.id })}
-                className="mt-3 flex w-full items-center justify-center rounded-md border  bg-white py-3 px-8 text-base font-medium text-black hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-1"
-            >
-                Remove from cart
-            </button>
         </a>
     );
 }
