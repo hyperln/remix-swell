@@ -20,11 +20,9 @@ export async function loader({ context }) {
 
 export default function Index() {
   const { products } = useLoaderData();
-  // console.log('products :>> ', products);
   return (
     <ProductList
       products={products?.results}
     />
-
   );
 }
