@@ -5,7 +5,6 @@ interface Props {
 }
 
 export function ProductList({ products }: Props) {
-  console.log('products :>> ', products);
   return (
     <div className='bg-white'>
       <div className='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
