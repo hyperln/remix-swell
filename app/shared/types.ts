@@ -5,6 +5,12 @@ export interface Product {
   price: string;
   currency: string;
   slug: string;
+  description: string;
+  options: {
+    value: {
+      size: string;
+    };
+  }[];
   images: {
     file: {
       url: string;
