@@ -8,7 +8,7 @@ export interface Product {
   description: string;
   options: {
     value: {
-      size: string;
+      sizes: string;
     };
   }[];
   images: {
