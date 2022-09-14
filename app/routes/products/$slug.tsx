@@ -19,8 +19,8 @@ function classNames(...classes: any) {
 
 export default function ProductPage() {
   const [selectedSize, setSelectedSize] = useState('');
-
   const { product } = useLoaderData();
+
   return (
     <div className='bg-white'>
       <div className='pt-6 pb-16 sm:pb-24'>
@@ -39,9 +39,12 @@ export default function ProductPage() {
             {/* Image gallery */}
             <div className='mt-8 lg:col-span-7 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0 '>
               <h2 className='sr-only'>Images</h2>
-
               <div className='grid grid-cols-1 '>
-                <img className='rounded-md' src={product.images[0].file.url} alt={product.name} />
+                <img
+                  className='rounded-md object-contain  hover:scale-125 ease-in duration-100'
+                  src={product.images[0].file.url}
+                  alt={product.name}
+                />
               </div>
             </div>
 
