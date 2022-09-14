@@ -22,7 +22,7 @@ export default function ProductPage() {
   const { product } = useLoaderData();
 
   return (
-    <div className='bg-white'>
+    <div className='bg-white grid w-screen place-items-center'>
       <div className='pt-6 pb-16 sm:pb-24'>
         <div className='mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
           <div className='lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8'>
@@ -41,7 +41,7 @@ export default function ProductPage() {
               <h2 className='sr-only'>Images</h2>
               <div className='grid grid-cols-1 '>
                 <img
-                  className='rounded-md object-contain  hover:scale-125 ease-in duration-100'
+                  className='rounded-md object-contain hover:scale-125 ease-in duration-100'
                   src={product.images[0].file.url}
                   alt={product.name}
                 />
@@ -52,7 +52,7 @@ export default function ProductPage() {
               <form>
                 <div className='mt-8'>
                   <div className='flex items-center justify-between'>
-                    <h2 className='text-sm font-medium text-gray-900'>Sizes</h2>
+                    <h2 className='text-m font-medium text-gray-900'>Sizes</h2>
                   </div>
 
                   <RadioGroup value={selectedSize} onChange={setSelectedSize} className='mt-2'>
