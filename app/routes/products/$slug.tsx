@@ -22,7 +22,7 @@ export default function ProductPage() {
 
   const { product } = useLoaderData();
   return (
-    <div className='bg-white '>
+    <div className='bg-white'>
       <div className='pt-6 pb-16 sm:pb-24'>
         <div className='mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
           <div className='lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8'>
@@ -62,10 +62,10 @@ export default function ProductPage() {
                           className={({ active, checked }: any) =>
                             classNames(
                               active
-                                ? 'opacity-25 cursor-not-allowed ring-2 ring-offset-2 ring-indigo-500'
+                                ? ' cursor-pointer  ring-indigo-500'
                                 : 'cursor-pointer focus:outline-none',
                               checked
-                                ? 'bg-indigo-600 border-transparent text-white hover:bg-indigo-700'
+                                ? 'bg-slate-700 border-transparent text-white'
                                 : 'bg-white border-gray-200 text-gray-900 hover:bg-gray-50',
                               'border rounded-md py-3 px-3 flex items-center justify-center text-sm font-medium uppercase sm:flex-1'
                             )
@@ -77,12 +77,23 @@ export default function ProductPage() {
                     </div>
                   </RadioGroup>
                 </div>
+                <button
+                  type='submit'
+                  className='mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-slate-700 py-3 px-8 text-base font-medium text-white hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2'
+                >
+                  Add to cart
+                </button>
               </form>
 
               {/* Product details */}
               <div className='mt-8 border-b border-gray-200'>
                 <h2 className='text-m font-medium text-gray-900'>Description</h2>
-                <div className='prose prose-base mt-4 text-gray-500' />
+                <div className='prose prose-base mt-2 text-gray-500' />
+                {product.description}
+              </div>
+              <div className='mt-8 border-b border-gray-200'>
+                <h2 className='text-m font-medium text-gray-900'>Shipping Details</h2>
+                <div className='prose prose-base mt-2 text-gray-500' />
                 {product.description}
               </div>
             </div>
