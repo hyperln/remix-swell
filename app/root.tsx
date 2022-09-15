@@ -14,7 +14,7 @@ export const meta: MetaFunction = () => ({
   viewport: "width=device-width,initial-scale=1",
 });
 
-export async function loader({context}) {
+export async function loader({ context }) {
   const swellStoreId = context.SWELL_STORE_ID;
   const swellPublicKey = context.SWELL_PUBLIC_KEY;
   return json({
@@ -35,7 +35,7 @@ export default function App() {
       </head>
       <body>
         <Layout>
-        <Outlet />
+          <Outlet />
         </Layout>
         <ScrollRestoration />
         <script

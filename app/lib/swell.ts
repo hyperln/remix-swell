@@ -51,7 +51,7 @@ export async function fetchSettings() {
   return swell.settings.get();
 }
 
-export async function fetchProducts(options: FetchProductsParams = {limit: 25, page: 1}) {
+export async function fetchProducts(options: FetchProductsParams = { limit: 25, page: 1 }) {
   ensureSwellIsInitialised()
   return swell.products.list(options);
 }
@@ -66,7 +66,12 @@ export async function fetchCart(): Promise<any> {
   return swell.cart.get();
 }
 
-export async function addItemToCart({productId, quantity = 1}: {productId: string, quantity?: number}) {
+export async function addItemToCart({ productId, quantity = 1 }: { productId: string, quantity?: number }) {
   ensureSwellIsInitialised()
-  return swell.cart.addItem({productId, quantity});
+  return swell.cart.addItem({ productId, quantity });
+}
+
+export async function removeItemFromCart(itemId: string) {
+  ensureSwellIsInitialised()
+  return swell.cart.removeItem(itemId)
 }

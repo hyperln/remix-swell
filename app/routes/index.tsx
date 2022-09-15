@@ -17,6 +17,9 @@ export async function loader({ context }) {
 
 export default function Index() {
   const { products } = useLoaderData();
-
-  return <ProductList products={products?.results} />;
+  return (
+    <ProductList
+      products={products?.results}
+    />
+  );
 }
