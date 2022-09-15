@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 import { addItemToCart } from "~/lib/swell";
 
 interface Props {
