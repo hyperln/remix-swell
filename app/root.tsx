@@ -1,14 +1,7 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
 import { json } from "@remix-run/cloudflare";
-import {
-  Links,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-  useLoaderData,
-} from "@remix-run/react";
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData } from "@remix-run/react";
+import { Layout } from "./components/templates/layout";
 import styles from "./styles/app.css"
 
 export function links() {
@@ -17,7 +10,7 @@ export function links() {
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "New Remix App",
+  title: "PSBArt",
   viewport: "width=device-width,initial-scale=1",
 });
 
@@ -41,7 +34,9 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <Layout>
         <Outlet />
+        </Layout>
         <ScrollRestoration />
         <script
           dangerouslySetInnerHTML={{
