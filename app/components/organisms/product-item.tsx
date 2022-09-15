@@ -20,7 +20,7 @@ export function ProductItem({ product }: Props) {
   const imageUrl = product.images[0].file.url;
 
   return (
-    <a key={product.id} href={product.href} className="group">
+    <Link to={`/products/${product.slug}`}>
       <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
         <img alt={product.name} src={imageUrl} className="w-full h-full object-center object-cover group-hover:opacity-75" />
       </div>
@@ -32,7 +32,6 @@ export function ProductItem({ product }: Props) {
       >
         Add to cart
       </button>
-    </a>
+    </Link>
   );
 }
-
