@@ -1,4 +1,4 @@
-import swell from 'swell-js'
+import swell from 'swell-js';
 
 // interface Credentials {
 //   storeId: string;
@@ -11,7 +11,7 @@ interface FetchProductsParams {
 }
 
 const options = {
-  useCamelCase: true
+  useCamelCase: true,
 };
 
 // interface iSwell {
@@ -36,42 +36,53 @@ const options = {
 // }
 
 export function initSwell(storeId: string, publicKey: string) {
-  if (!swell.options?.store && !swell.options?.key)
-    swell.init(storeId, publicKey, options);
+  if (!swell.options?.store && !swell.options?.key) swell.init(storeId, publicKey, options);
 }
 
 const ensureSwellIsInitialised = (...params: any) => {
   if (!swell.options?.store && !swell.options?.key) {
     throw new Error('Swell is not initialised, please ensure to initialise Swell');
   }
-}
+};
 
 export async function fetchSettings() {
-  ensureSwellIsInitialised()
+  ensureSwellIsInitialised();
   return swell.settings.get();
 }
 
 export async function fetchProducts(options: FetchProductsParams = { limit: 25, page: 1 }) {
-  ensureSwellIsInitialised()
+  ensureSwellIsInitialised();
   return swell.products.list(options);
 }
 
 export async function fetchProduct(slugOrId: string) {
-  ensureSwellIsInitialised()
+  ensureSwellIsInitialised();
   return swell.products.get(slugOrId);
 }
 
 export async function fetchCart(): Promise<any> {
-  ensureSwellIsInitialised()
+  ensureSwellIsInitialised();
   return swell.cart.get();
 }
 
-export async function addItemToCart({ productId, quantity = 1 }: { productId: string, quantity?: number }) {
-  ensureSwellIsInitialised()
-  return swell.cart.addItem({ productId, quantity });
+export async function addItemToCart({
+  productId,
+  quantity = 1,
+  options,
+}: {
+  productId: string;
+  quantity?: number;
+  options?: {
+    value: {
+      sizes: string;
+    };
+  }[];
+}) {
+  ensureSwellIsInitialised();
+  return swell.cart.addItem({ productId, quantity, options });
 }
 
 export async function removeItemFromCart(itemId: string) {
-  ensureSwellIsInitialised()
-  return swell.cart.removeItem(itemId)
+  ensureSwellIsInitialised();
+  return swell.cart.removeItem(itemId);
 }
