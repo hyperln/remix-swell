@@ -1,5 +1,5 @@
 import { useLoaderData } from '@remix-run/react';
-import { fetchProduct, initSwell } from '~/lib/swell';
+import { fetchProduct, initSwell, addItemToCart } from '~/lib/swell';
 import { useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
 
@@ -81,6 +81,7 @@ export default function ProductPage() {
                   </RadioGroup>
                 </div>
                 <button
+                  onClick={() => addItemToCart({ productId: product.id })}
                   type='submit'
                   className='mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-slate-700 py-3 px-8 text-base font-medium text-white hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2'
                 >
