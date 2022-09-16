@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { Link } from '@remix-run/react';
 import { addItemToCart } from '~/lib/swell';
+=======
+import { Link } from "@remix-run/react";
+import { addItemToCart } from "~/lib/swell";
+>>>>>>> caae86d13bda6b85220454db247419ca5a1679fc
 
 interface Props {
   product: Product;
